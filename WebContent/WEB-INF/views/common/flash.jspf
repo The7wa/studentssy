@@ -1,0 +1,11 @@
+<%@ page pageEncoding="UTF-8" %>
+<c:if test="${not empty sessionScope.flash}">
+    <div class="flash-wrap">
+        <div class="flash flash-${sessionScope.flash.type}" role="status">
+            <span class="flash-dot"></span>
+            <span class="flash-text"><c:out value="${sessionScope.flash.message}"/></span>
+            <button type="button" class="flash-close" aria-label="关闭提示">×</button>
+        </div>
+    </div>
+    <c:remove var="flash" scope="session"/>
+</c:if>

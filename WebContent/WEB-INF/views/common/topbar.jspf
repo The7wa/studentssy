@@ -1,0 +1,25 @@
+<%@ page pageEncoding="UTF-8" %>
+<header class="topbar">
+    <button type="button" class="menu-btn" id="menuToggle" aria-label="展开菜单">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+
+    <div class="page-head">
+        <h1><c:out value="${pageTitle}"/></h1>
+        <p>学籍通 · 学生管理系统</p>
+    </div>
+
+    <div class="topbar-right">
+        <span class="topbar-date" id="today"></span>
+        <a class="user-chip" href="${ctx}/profile" title="个人中心">
+            <span class="avatar">${loginUser.initial}</span>
+            <span class="user-chip-meta">
+                <strong><c:out value="${loginUser.displayName}"/></strong>
+                <small>${loginUser.roleName}</small>
+            </span>
+        </a>
+        <a class="icon-btn" href="${ctx}/logout" title="退出登录" aria-label="退出登录">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+        </a>
+    </div>
+</header>

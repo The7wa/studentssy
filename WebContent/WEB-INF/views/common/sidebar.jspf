@@ -1,0 +1,94 @@
+<%@ page pageEncoding="UTF-8" %>
+<aside class="sidebar" id="sidebar">
+    <a class="sidebar-brand" href="${ctx}/dashboard">
+        <span class="brand-mark">学</span>
+        <span class="brand-text">
+            <strong>学籍通</strong>
+            <small>STUDENT SYSTEM</small>
+        </span>
+    </a>
+
+    <nav class="nav" aria-label="主导航">
+        <p class="nav-label">概览</p>
+        <c:choose>
+            <c:when test="${loginUser.student}">
+                <a class="nav-item ${activeNav eq 'dashboard' ? 'active' : ''}" href="${ctx}/dashboard">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                    </span>
+                    我的首页
+                </a>
+                <p class="nav-label">学习</p>
+                <a class="nav-item ${activeNav eq 'myScore' ? 'active' : ''}" href="${ctx}/score?action=my">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="0.8"/><rect x="12" y="8" width="3" height="10" rx="0.8"/><rect x="17" y="5" width="3" height="13" rx="0.8"/></svg>
+                    </span>
+                    我的成绩
+                </a>
+            </c:when>
+            <c:otherwise>
+                <a class="nav-item ${activeNav eq 'dashboard' ? 'active' : ''}" href="${ctx}/dashboard">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                    </span>
+                    数据看板
+                </a>
+
+                <p class="nav-label">教务管理</p>
+                <a class="nav-item ${activeNav eq 'student' ? 'active' : ''}" href="${ctx}/student">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </span>
+                    学生管理
+                </a>
+                <c:if test="${loginUser.admin}">
+                    <a class="nav-item ${activeNav eq 'clazz' ? 'active' : ''}" href="${ctx}/clazz">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </span>
+                        班级管理
+                    </a>
+                    <a class="nav-item ${activeNav eq 'major' ? 'active' : ''}" href="${ctx}/major">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
+                        </span>
+                        专业管理
+                    </a>
+                </c:if>
+                <a class="nav-item ${activeNav eq 'course' ? 'active' : ''}" href="${ctx}/course">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+                    </span>
+                    ${loginUser.teacher ? '我的课程' : '课程管理'}
+                </a>
+                <a class="nav-item ${activeNav eq 'score' ? 'active' : ''}" href="${ctx}/score">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="0.8"/><rect x="12" y="8" width="3" height="10" rx="0.8"/><rect x="17" y="5" width="3" height="13" rx="0.8"/></svg>
+                    </span>
+                    成绩管理
+                </a>
+
+                <c:if test="${loginUser.admin}">
+                    <p class="nav-label">系统</p>
+                    <a class="nav-item ${activeNav eq 'user' ? 'active' : ''}" href="${ctx}/user">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+                        </span>
+                        用户管理
+                    </a>
+                </c:if>
+            </c:otherwise>
+        </c:choose>
+    </nav>
+
+    <div class="sidebar-foot">
+        <a class="side-user" href="${ctx}/profile">
+            <span class="avatar">${loginUser.initial}</span>
+            <span>
+                <span class="side-user-name"><c:out value="${loginUser.displayName}"/></span>
+                <span class="side-user-role">${loginUser.roleName}</span>
+            </span>
+        </a>
+    </div>
+</aside>
+<div class="sidebar-mask" id="sidebarMask"></div>

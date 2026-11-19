@@ -1,0 +1,9 @@
+build/
+out/
+*.class
+*.log
+*.tmp
+.DS_Store
+.idea/
+*.iml
+WebContent/WEB-INF/classes/
